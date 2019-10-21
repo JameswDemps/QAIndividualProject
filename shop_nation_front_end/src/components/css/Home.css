@@ -1,0 +1,53 @@
+.Home {
+    text-align: center;
+}
+
+.Home-header {
+    /*
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-size: 100%;
+    background-repeat : 'no-repeat';
+    background-position: 'center';
+    */
+    background-image: url("/src/images/shopNationLogo.png");
+    height: 10vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.Home-centre {
+    flex-direction: row;
+    display: flex;
+    height: 85.6vh;
+}
+
+.Home-items {
+    /* align-self: flex-start; */
+    width: 60vw;
+}
+
+.Home-basket {
+    /* align-self: flex-end;*/
+    width: 40vw;
+}
+
+.Home-basketList {
+    height: 75.6vh;
+}
+
+.Home-checkout {
+    height: 10vh;
+}
+
+.Home-search {
+    height: 20vh;
+}
+
+.Home-itemList {
+    height: 65.6vh;
+}
