@@ -9,15 +9,26 @@ export default class Home extends React.Component {
         super(props);
 
         this.state = {
+            isLoading: true
 
         }
     }
+
+    handleClick() {
+        console.log("Jimmy")
+    }
+
+
     render() {
+
+
         return (
             <div className="Home">
-                <img src={require('./../images/shopNationLogo.png')}  alt="Shop Nation" className="Home-header"></img>
-                <div className="Home-centre">
-                    <div className="Home-items">
+                Hey
+                <div><img src={require('./../images/shopNationLogo.png')}  alt="Shop Nation" className="Home-header"></img></div>
+                <div className="col-lg-6">
+                    Hey
+                    {/* <div className="Home-items">
                         <div className="Home-search">
                             Search Area!
                         </div>
@@ -30,13 +41,18 @@ export default class Home extends React.Component {
                         <div className="Home-basketList">
                             Basket!
                         </div>
+                        <div className="Home-total-line"></div>
+                        <div>
+                            Totol
+                        </div>
                         <div className="Home-checkout">
-                            <Button variant="primary" disabled={isLoading} onClick={!isLoading ? handleClick : null}>
-                                {isLoading ? 'Loading…' : 'Click to load'}
+                            <Button variant="primary" disabled={this.state.isLoading} onClick={this.state.isLoading ? this.handleClick : null}>
+                                {this.state.isLoading ? 'Loading…' : 'Click to load'}
                             </Button>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
+                <button className="btn btn-primary">Button</button>
                 
             </div>
         )

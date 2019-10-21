@@ -1,5 +1,12 @@
 .Home {
     text-align: center;
+    /* height: 100vh;
+    width: 100vw; */
+    /*
+    border: solid black 4px;
+    box-sizing: border-box;
+    outline-offset: -4px;
+    */
 }
 
 .Home-header {
@@ -13,41 +20,143 @@
     */
     background-image: url("/src/images/shopNationLogo.png");
     height: 10vh;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
     background-size: cover;
     background-repeat: no-repeat;
-
+    /*
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    */
 }
 
 .Home-centre {
     flex-direction: row;
     display: flex;
-    height: 85.6vh;
+    height: 86vh;
+    width: 100vw;
+    /*
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    */
 }
 
 .Home-items {
     /* align-self: flex-start; */
     width: 60vw;
+
+    height: 86vh;
+    /*
+    border-top: solid black 4px;
+    border-right: solid black 4px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    */
 }
 
 .Home-basket {
     /* align-self: flex-end;*/
     width: 40vw;
+    height: 86vh;
+    /*
+    border-top: solid black 4px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    */
 }
 
 .Home-basketList {
-    height: 75.6vh;
+    height: 76vh;
+    /*
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    */
+}
+
+.Home-basket-header {
+    height: 5vh;
+    /*
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    */
+}
+
+.Home-header-line {
+    /*
+    height: 0vh;
+    width: 30vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    border-top: solid black 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    */
+}
+
+.Home-shopping-list {
+    /* align-self: flex-end;*/
+    /*
+    width: 30vw;
+    border-top: solid black 4px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    */
+}
+
+.Home-total-line {
+    /*
+    height: 0vh;
+    width: 30vw;
+    border-top: solid black 2px;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    */
+}
+
+.Home-total {
+    /*
+    height: 5vh;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    */
 }
 
 .Home-checkout {
     height: 10vh;
+    /*
+    border-top: solid black 4px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    */
 }
 
 .Home-search {
     height: 20vh;
+    /*
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    */
 }
 
 .Home-itemList {
-    height: 65.6vh;
+    height: 66vh;
+    /*
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    */
 }
