@@ -3,6 +3,7 @@ package com.nationwide.shop_nation.controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,12 +27,19 @@ public class ShopNationController {
 		return basketService.showAll();
 	}
 	
-	@GetMapping("/addToBasket/{Id}")
-	public BasketItem incrementQuantity(@PathVariable Long Id) {
-		System.out.println("incrementQuantity");
-		System.out.println(Id);
-		BasketItem basketItem = basketService.showId(Id);
-		return basketService.incrementQuantity(basketItem);
+	@PutMapping("/addToBasket/{id}")
+	public BasketItem incrementQuantity(@PathVariable Long id) {
+		return basketService.incrementQuantity(id);
+	}
+	
+	@DeleteMapping("/removeFromBasket/{id}")
+	public BasketItem deleteBasketItem(@PathVariable Long id) {
+		return basketService.deleteBasketItem(id);
+	}
+	
+	@PostMapping("/createNewItem/{id}")
+	public BasketItem createNewItem(@PathVariable Long id) {
+		return basketService.createNewItem(id);
 	}
 		
 }
