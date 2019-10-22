@@ -23,12 +23,41 @@ export default class Home extends React.Component {
 
 
         return (
+                    /*
+                    <img src={require('./../images/shopNationLogo.png')}  alt="Shop Nation" className="center"></img>
+                    */
+            <div className="Home"> 
+                <div className="Home-header">
+                </div>
+                <div className="Home-centre">
+                    <div className="Home-items">
+                        <div className="Home-search">
+
+                        </div>
+                        <div className="Home-itemList">
+
+                        </div>
+                    </div>
+                    <div className="Home-basket">
+                        <div className="Home-basketList">
+
+                        </div>
+                        <div className="Home-checkout">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            /*
             <div className="Home">
                 Hey
-                <div><img src={require('./../images/shopNationLogo.png')}  alt="Shop Nation" className="Home-header"></img></div>
                 <div className="col-lg-6">
-                    Hey
-                    {/* <div className="Home-items">
+                <div><img src={require('./../images/shopNationLogo.png')}  alt="Shop Nation" className="Home-header"></img></div>
+                    <div className="Home-items">
                         <div className="Home-search">
                             Search Area!
                         </div>
@@ -50,11 +79,12 @@ export default class Home extends React.Component {
                                 {this.state.isLoading ? 'Loading…' : 'Click to load'}
                             </Button>
                         </div>
-                    </div> */}
+                    </div>
                 </div>
                 <button className="btn btn-primary">Button</button>
                 
             </div>
+            */
         )
     }
 }

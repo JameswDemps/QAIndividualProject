@@ -1,7 +1,7 @@
 .Home {
-    text-align: center;
-    /* height: 100vh;
-    width: 100vw; */
+    /*text-align: center;*/
+    height: 100vh;
+    width: 100vw;
     /*
     border: solid black 4px;
     box-sizing: border-box;
@@ -14,28 +14,26 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-size: 100%;
-    background-repeat : 'no-repeat';
-    background-position: 'center';
     */
-    background-image: url("/src/images/shopNationLogo.png");
-    height: 10vh;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-    background-size: cover;
     background-repeat: no-repeat;
+    background-image: url(./../../images/shopNationLogo.png);
+    height: 10%;
+    background-size: contain;
+    background-position: center;
     /*
+    background-repeat: no-repeat;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     */
 }
 
+
 .Home-centre {
     flex-direction: row;
     display: flex;
-    height: 86vh;
-    width: 100vw;
+    height: 90%;
+    width: 100%;
     /*
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -45,9 +43,7 @@
 
 .Home-items {
     /* align-self: flex-start; */
-    width: 60vw;
-
-    height: 86vh;
+    width: 60%;
     /*
     border-top: solid black 4px;
     border-right: solid black 4px;
@@ -59,8 +55,7 @@
 
 .Home-basket {
     /* align-self: flex-end;*/
-    width: 40vw;
-    height: 86vh;
+    width: 40%;
     /*
     border-top: solid black 4px;
     box-sizing: border-box;
@@ -70,7 +65,7 @@
 }
 
 .Home-basketList {
-    height: 76vh;
+    height: 85%;
     /*
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -134,7 +129,7 @@
 }
 
 .Home-checkout {
-    height: 10vh;
+    height: 15%;
     /*
     border-top: solid black 4px;
     box-sizing: border-box;
@@ -144,7 +139,7 @@
 }
 
 .Home-search {
-    height: 20vh;
+    height: 20%;
     /*
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -153,7 +148,7 @@
 }
 
 .Home-itemList {
-    height: 66vh;
+    height: 80%;
     /*
     box-sizing: border-box;
     -moz-box-sizing: border-box;
