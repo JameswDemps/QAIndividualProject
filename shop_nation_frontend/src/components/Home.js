@@ -3,6 +3,8 @@ import { Button } from 'react-bootstrap';
 
 import './css/Home.css';
 
+import GetShoppingList from './GetShoppingList';
+
 export default class Home extends React.Component {
     
     constructor(props) {
@@ -17,6 +19,8 @@ export default class Home extends React.Component {
     handleClick() {
         console.log("Jimmy")
     }
+
+    
 
 
     render() {
@@ -40,10 +44,18 @@ export default class Home extends React.Component {
                     </div>
                     <div className="Home-basket">
                         <div className="Home-basketList">
+                            <div className="Home-basket-header">
+                                My Basket 
+                            </div>
+                            <div className="Home-basket-content">
+                                <div className="Home-basket-shoppingList">
+                                    <GetShoppingList />
+                                </div>
 
+                            </div>
                         </div>
                         <div className="Home-checkout">
-
+                            <button type="button" className="Home-checkout-button"  class="btn btn-primary btn-lg btn-block">Checkout</button>
                         </div>
                     </div>
                 </div>

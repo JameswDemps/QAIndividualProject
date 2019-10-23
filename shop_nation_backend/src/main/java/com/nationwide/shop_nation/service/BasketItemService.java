@@ -47,18 +47,6 @@ public class BasketItemService {
 		return fromDatabase;
 	}
 	
-	public BasketItem decrementQuantity(@PathVariable Long id) {
-		BasketItem fromDatabase = showId(id);
-		int quantity = fromDatabase.getQuantity();
-		if (quantity == 0) {
-			return deleteBasketItem(id);
-		}
-		else {
-			fromDatabase.setQuantity(fromDatabase.getQuantity()-1);			
-		}
-		return fromDatabase;
-	}
-	
 	public BasketItem deleteBasketItem(Long id) {
 		BasketItem fromDatabase = showId(id);
 		basketItemRepo.delete(fromDatabase);
