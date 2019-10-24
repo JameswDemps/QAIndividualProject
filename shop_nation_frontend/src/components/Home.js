@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 import './css/Home.css';
 
 import GetShoppingList from './GetShoppingList';
+import GetProductList from './GetProductList';
 
 export default class Home extends React.Component {
     
@@ -39,7 +40,7 @@ export default class Home extends React.Component {
 
                         </div>
                         <div className="Home-itemList">
-
+                            <GetProductList />
                         </div>
                     </div>
                     <div className="Home-basket">
@@ -51,7 +52,6 @@ export default class Home extends React.Component {
                                 <div className="Home-basket-shoppingList">
                                     <GetShoppingList />
                                 </div>
-
                             </div>
                         </div>
                         <div className="Home-checkout">

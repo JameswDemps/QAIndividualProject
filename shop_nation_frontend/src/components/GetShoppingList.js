@@ -1,18 +1,35 @@
 import React from "react";
-import { Table } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
+
+import "./css/GetShoppingList.css";
 
 export default class GetShoppingList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      shoppingList: []
+      shoppingList: [],
+      firstRender: true
     };
   }
-  async myFunc() {
-      console.log(this);
+
+  deleteItem = id => {
+    const requestOptions = {
+      method: 'DELETE'
+    };
+  
+    // Note: I'm using arrow functions inside the `.fetch()` method.
+    // This makes it so you don't have to bind component functions like `setState`
+    // to the component.
+    fetch("http://localhost:9999/shop/removeFromBasket/" + id, requestOptions).then((response) => {
+      return response.json();
+    }).then((result) => {
+        this.getShoppingList();
+    });
+  }
+
+  async getShoppingList() {
     const response = await fetch("http://localhost:9999/shop/showBasket");
     const json = await response.json();
-    console.log(json);
     this.setState({ shoppingList: json });
 
     // fetch("/shop/showBasket")
@@ -49,38 +66,20 @@ export default class GetShoppingList extends React.Component {
           </tbody>
         </Table>
       );
-      //this.makeRow(shoppingList.id, shoppingList.product.productName, shoppingList.quantity, shoppingList.price)
     });
-  }
-
-  makeRow(id, productName, quantity, price) {
-    // <Table id="1" striped bordered hover>
-    //                     <thead>
-    //                         <tr>
-    //                         <th>#</th>
-    //                         <th>Product Name</th>
-    //                         <th>Quantity</th>
-    //                         <th>price</th>
-    //                         </tr>
-    //                     </thead>
-    //                     <tbody>
-    //                         <tr>
-    //                         <td></td>
-    //                         <td>{shoppingList.id}</td>
-    //                         <td>{shoppingList.product.productName}</td>
-    //                         <td>{shoppingList.quantity}</td>
-    //                         <td>{shoppingList.price}</td>
-    //                         </tr>
-    //                     </tbody>
-    //                 </Table>
   }
 
   render() {
     let shopping = this.state.shoppingList;
 
+    if (this.state.firstRender === true) {
+      this.getShoppingList();
+      this.state.firstRender = false;
+    }
+
     return (
       <div>
-        <button onClick={() => this.myFunc()}>Load Players</button>
+        {/* <button onClick={() => this.myFunc()}>Load Players</button> */}
         {/* <h1>FIFA 20 Ultimate Team Squad Builder</h1>
             <div>
                 <button onClick={() => this.myFunc()}>Load Players</button>
@@ -90,59 +89,35 @@ export default class GetShoppingList extends React.Component {
 
         {/* <button>Select Squad</button> */}
 
-          <Table id="1" striped bordered hover>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Product Name</th>
-                <th>Quantity</th>
-                <th>price</th>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Product Name</th>
+              <th>Quantity</th>
+              <th>price</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {shopping.map(myShopping => (
+              <tr key={myShopping.id}>
+                <td>{myShopping.product.productName}</td>
+                <td>{myShopping.quantity}</td>
+                <td>{myShopping.product.price}</td>
+                <td className="buttonCell">
+                  <button
+                    type="button"
+                    class="btn btn-light btn-lg close"
+                    aria-label="Close"
+                    onClick={() => this.deleteItem(myShopping.id)}
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </td>
               </tr>
-            </thead>
-            <tbody>
-        {shopping.map(myShooping => (
-              <tr key={myShooping.id}>
-                <td>{myShooping.id}</td>
-                <td>{myShooping.product.productName}</td>
-                <td>{myShooping.quantity}</td>
-                <td>{myShooping.product.price}</td>
-              </tr>
-        ))}
-            </tbody>
+            ))}
+          </tbody>
         </Table>
-
-        {/* <table>
-                <tr>
-                <th>Playername</th>
-                <th>Position</th>
-                    <th>Position</th>
-                        <th>Position</th>
-                            <th>Position</th>
-                                <th>Position</th>
-                                    <th>Position</th>
-                                        <th>Position</th>
-                </tr>
-                <tr>
-                <td>Isaac Douglas</td>
-                <td>LWB</td>
-                <td>Isaac Douglas</td>
-                <td>LWB</td>
-                <td>Isaac Douglas</td>
-                <td>LWB</td>
-                <td>Isaac Douglas</td>
-                <td>LWB</td>
-                </tr>
-                <tr>
-                <td>Lois</td>
-                <td>Griffin</td>
-                <td>Lois</td>
-                <td>Griffin</td>
-                <td>Lois</td>
-                <td>Griffin</td>
-                <td>Lois</td>
-                <td>Griffin</td>
-                </tr>
-            </table> */}
       </div>
     );
   }

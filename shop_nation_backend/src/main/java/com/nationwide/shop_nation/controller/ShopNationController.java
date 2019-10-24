@@ -13,15 +13,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nationwide.shop_nation.persistence.entity.BasketItem;
+import com.nationwide.shop_nation.persistence.entity.Product;
 import com.nationwide.shop_nation.service.BasketItemService;
+import com.nationwide.shop_nation.service.ProductService;
 
 @RestController
 @RequestMapping("/shop")
 @CrossOrigin(origins="http://localhost:3000", allowedHeaders="*")
 public class ShopNationController {
 	
+	@Autowired 
+	private ProductService productService;
+	
 	@Autowired
 	private BasketItemService basketService;
+	
+	@GetMapping("/showProducts")
+	public ArrayList<Product> showAllProducts() {
+		System.out.println("show produts");
+		return productService.showAll();
+	}
 	
 	@GetMapping("/showBasket")
 	public ArrayList<BasketItem> showAll() {
