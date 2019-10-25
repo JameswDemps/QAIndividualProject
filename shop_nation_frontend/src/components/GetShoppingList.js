@@ -12,14 +12,24 @@ export default class GetShoppingList extends React.Component {
     };
   }
 
+  myFunc = () => {
+    this.props.changeHomeState(false);
+    //console.log("Clicked");
+  }
+
+
+  changeState = () => {
+
+    this.setState({
+        firstRender: true
+    })
+  }
+
   deleteItem = id => {
     const requestOptions = {
       method: 'DELETE'
     };
   
-    // Note: I'm using arrow functions inside the `.fetch()` method.
-    // This makes it so you don't have to bind component functions like `setState`
-    // to the component.
     fetch("http://localhost:9999/shop/removeFromBasket/" + id, requestOptions).then((response) => {
       return response.json();
     }).then((result) => {
@@ -39,42 +49,13 @@ export default class GetShoppingList extends React.Component {
     // .then(data => console.log(this.state.shoppingList)
   }
 
-  myFunc2() {
-    this.state.shoppingList.map(shoppingList =>
-      console.log(shoppingList.product.productName)
-    );
-    //console.log(this.state.shoppingList.id);
-    this.state.shoppingList.map(shoppingList => {
-      return (
-        <Table id="1" striped bordered hover>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Product Name</th>
-              <th>Quantity</th>
-              <th>price</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td></td>
-              <td>{shoppingList.id}</td>
-              <td>{shoppingList.product.productName}</td>
-              <td>{shoppingList.quantity}</td>
-              <td>{shoppingList.price}</td>
-            </tr>
-          </tbody>
-        </Table>
-      );
-    });
-  }
-
   render() {
     let shopping = this.state.shoppingList;
 
-    if (this.state.firstRender === true) {
+    if (this.props.theHomeState === true) {
       this.getShoppingList();
-      this.state.firstRender = false;
+      this.myFunc();
+      //this.state.firstRender = false;
     }
 
     return (
@@ -102,8 +83,8 @@ export default class GetShoppingList extends React.Component {
             {shopping.map(myShopping => (
               <tr key={myShopping.id}>
                 <td>{myShopping.product.productName}</td>
-                <td>{myShopping.quantity}</td>
-                <td>{myShopping.product.price}</td>
+                <td>{"x" + JSON.parse(myShopping.quantity)}</td>
+                <td>{"£ " + (JSON.parse(myShopping.product.price) * JSON.parse(myShopping.quantity)).toFixed(2)}</td>
                 <td className="buttonCell">
                   <button
                     type="button"

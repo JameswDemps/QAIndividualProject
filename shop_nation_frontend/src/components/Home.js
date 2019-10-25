@@ -1,70 +1,112 @@
-import React from 'react';
-import { Button } from 'react-bootstrap';
+import React from "react";
+import { Button, Search } from "react-bootstrap";
 
-import './css/Home.css';
+import "./css/Home.css";
 
-import GetShoppingList from './GetShoppingList';
-import GetProductList from './GetProductList';
+import GetShoppingList from "./GetShoppingList";
+import GetProductList from "./GetProductList";
+import SearchBar from "./SearchBar";
 
 export default class Home extends React.Component {
-    
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            isLoading: true
+    this.state = {
+      isLoading: true,
+      myHomeBoolean: true,
+      searchValue: '',
+      updateSearch: true
+    };
 
-        }
-    }
+    //this.handleSearchChange = this.handleSearchChange.bind(this);
+  }
 
-    handleClick() {
-        console.log("Jimmy")
-    }
+  handleSearchChange = event => {
+    this.setState({
+        searchValue: event
+    });
+    return event;
+  };
 
-    
+  handleClick() {
+    console.log("Jimmy");
+  }
 
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps + "it worked!!");
+  }
 
-    render() {
+  changeSearchState = received => {
+    this.setState({
+        updateSearch: received
+    });
+    return received;
+  };
 
+  changeHomeState = received => {
+    this.setState({
+      myHomeBoolean: received
+    });
+    return received;
+  };
 
-        return (
-                    /*
+  printState = () => {
+    console.log(this.state.searchValue);
+  };
+
+  render() {
+    return (
+      /*
                     <img src={require('./../images/shopNationLogo.png')}  alt="Shop Nation" className="center"></img>
                     */
-            <div className="Home"> 
-                <div className="Home-header">
-                </div>
-                <div className="Home-centre">
-                    <div className="Home-items">
-                        <div className="Home-search">
-
-                        </div>
-                        <div className="Home-itemList">
-                            <GetProductList />
-                        </div>
-                    </div>
-                    <div className="Home-basket">
-                        <div className="Home-basketList">
-                            <div className="Home-basket-header">
-                                My Basket 
-                            </div>
-                            <div className="Home-basket-content">
-                                <div className="Home-basket-shoppingList">
-                                    <GetShoppingList />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="Home-checkout">
-                            <button type="button" className="Home-checkout-button"  class="btn btn-primary btn-lg btn-block">Checkout</button>
-                        </div>
-                    </div>
-                </div>
+      <div className="Home">
+        {/* <link
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          rel="stylesheet"
+        />*/}
+        <div className="Home-header"></div>
+        <div className="Home-centre">
+          <div className="Home-items">
+            <div className="Home-search">
+              <SearchBar changeSearchState={this.changeSearchState} searchValue={this.state.searchValue} handleSearchChange={this.handleSearchChange}/>
             </div>
+            <div className="Home-itemList">
+              <GetProductList 
+                changeHomeState={this.changeHomeState} 
+                searchValue={this.state.searchValue} 
+                changeSearchState={this.changeSearchState}
+                updateSearch={this.state.updateSearch}                
+                
+                />
+            </div>
+          </div>
+          <div className="Home-basket">
+            <div className="Home-basketList">
+              <div className="Home-basket-header">My Basket</div>
+              <div className="Home-basket-content">
+                <div className="Home-basket-shoppingList" id="ScrollBar-style">
+                  <GetShoppingList
+                    changeHomeState={this.changeHomeState}
+                    theHomeState={this.state.myHomeBoolean}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="Home-checkout">
+              <button
+                type="button"
+                className="Home-checkout-button"
+                class="btn btn-primary btn-lg btn-block"
+              >
+                Checkout
+              </button>
+            </div>
+          </div>
+        </div>
+        {/* <button onClick={this.printState}>My Button Home</button> */}
+      </div>
 
-
-
-
-            /*
+      /*
             <div className="Home">
                 Hey
                 <div className="col-lg-6">
@@ -97,6 +139,6 @@ export default class Home extends React.Component {
                 
             </div>
             */
-        )
-    }
+    );
+  }
 }
