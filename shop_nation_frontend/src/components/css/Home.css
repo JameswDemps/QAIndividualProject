@@ -156,8 +156,9 @@
 }
 
 .Home-search {
-    height: 20%;
-    /*
+    height: 10%;
+    padding: 2% 0% 2% 0%;
+    /* 
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -165,7 +166,7 @@
 }
 
 .Home-itemList {
-    height: 80%;
+    height: 90%;
     overflow: auto;
     /*
     box-sizing: border-box;

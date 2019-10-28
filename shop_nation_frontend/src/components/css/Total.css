@@ -1,0 +1,14 @@
+.Total {
+    flex-direction: row;
+    display: flex;
+    /*
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    */
+}
+
+.Total-text {
+    font-weight: bold;
+    text-align: center;
+}

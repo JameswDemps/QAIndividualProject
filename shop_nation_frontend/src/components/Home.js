@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { Button, Search } from "react-bootstrap";
 
 import "./css/Home.css";
@@ -6,6 +6,7 @@ import "./css/Home.css";
 import GetShoppingList from "./GetShoppingList";
 import GetProductList from "./GetProductList";
 import SearchBar from "./SearchBar";
+import Total from "./Total";
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -15,7 +16,8 @@ export default class Home extends React.Component {
       isLoading: true,
       myHomeBoolean: true,
       searchValue: '',
-      updateSearch: true
+      updateSearch: true,
+      totalPrice: 0
     };
 
     //this.handleSearchChange = this.handleSearchChange.bind(this);
@@ -35,6 +37,14 @@ export default class Home extends React.Component {
   componentWillReceiveProps(nextProps) {
     console.log(nextProps + "it worked!!");
   }
+
+  changeTotalPrice = received => {
+    this.setState({
+        totalPrice: received
+    });
+    return received;
+  };
+  
 
   changeSearchState = received => {
     this.setState({
@@ -88,7 +98,13 @@ export default class Home extends React.Component {
                   <GetShoppingList
                     changeHomeState={this.changeHomeState}
                     theHomeState={this.state.myHomeBoolean}
+                    changeTotalPrice={this.changeTotalPrice}
                   />
+                </div>
+                <div className="Home-basket-total">
+                    <Total
+                        TotalPrice={this.state.totalPrice}
+                    />
                 </div>
               </div>
             </div>
