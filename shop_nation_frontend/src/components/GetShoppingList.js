@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { Table, Button } from "react-bootstrap";
 
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+
 import "./css/GetShoppingList.css";
+import { doExpression } from "@babel/types";
 
 export default class GetShoppingList extends React.Component {
   constructor(props) {
@@ -11,6 +15,46 @@ export default class GetShoppingList extends React.Component {
       firstRender: true,
       totalPrice: 0
     };
+  }
+
+  generate = () => {
+    console.log("Called generate");
+    var doc = new jsPDF('p', 'pt');
+  
+    var res = doc.autoTableHtmlToJson(document.getElementById("basic-table"));
+    //doc.autoTable(res.columns, res.data, {margin: {top: 80}});
+  
+    var header = function(data) {
+      doc.setFontSize(18);
+      doc.setTextColor(40);
+      doc.setFontStyle('normal');
+      //doc.addImage(headerImgData, 'JPEG', data.settings.margin.left, 20, 50, 50);
+      doc.text("Your Shopping List", data.settings.margin.left, 50);
+    };
+
+    // var footer = function(data) {
+      //   doc.setFontSize(10);
+      //   doc.setTextColor(40);
+      //   doc.setFontStyle('normal');
+      
+      //   doc.text("Total: " + (this.state.totalPrice).toString(), data.settings.margin.left, 50);
+      // };
+    var totalText = this.state.totalPrice.toString();
+    var finalY = doc.lastAutoTable.finalY; // The y position on the page
+    doc.text(20, 20, "Yo");
+  
+    var options = {
+      beforePageContent: header,
+      margin: {
+        top: 80
+      },
+      // afterPageContent: footer,
+      //startY: doc.autoTableEndPosY() + 20
+    };
+  
+    doc.autoTable(res.columns, res.data, options);
+  
+    doc.save("table.pdf");
   }
 
   // componentDidMount() {
@@ -45,7 +89,7 @@ export default class GetShoppingList extends React.Component {
       method: "DELETE"
     };
 
-    fetch("http://localhost:9999/shop/removeFromBasket/" + id, requestOptions)
+    fetch("http://34.89.62.251:8081/shop/removeFromBasket/" + id, requestOptions)
       .then(response => {
         return response.json();
       })
@@ -57,7 +101,7 @@ export default class GetShoppingList extends React.Component {
   };
 
   async getShoppingList() {
-    const response = await fetch("http://localhost:9999/shop/showBasket");
+    const response = await fetch("http://34.89.62.251:8081/shop/showBasket");
     const json = await response.json();
      this.setState({ shoppingList: json });
     //this.state.shoppingList = json;
@@ -149,7 +193,7 @@ export default class GetShoppingList extends React.Component {
 
         {/* <button>Select Squad</button> */}
 
-        <Table striped bordered hover>
+        <Table id="basic-table" striped bordered hover>
           <thead>
             <tr>
               <th>Product Name</th>
@@ -195,6 +239,7 @@ export default class GetShoppingList extends React.Component {
             })}
           </tbody>
         </Table>
+        <button onClick={this.generate}>Generate PDF</button>
       </div>
     );
   }

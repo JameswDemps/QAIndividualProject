@@ -30,7 +30,7 @@ export default class GetProductList extends React.Component {
       method: "PUT"
     };
 
-    fetch("http://localhost:9999/shop/addToBasket/" + id, requestOptions)
+    fetch("http://34.89.62.251:8081/shop/addToBasket/" + id, requestOptions)
       .then(response => {
         return response.json();
       })
@@ -45,7 +45,7 @@ export default class GetProductList extends React.Component {
       method: "POST"
     };
 
-    fetch("http://localhost:9999/shop/createNewItem/" + id, requestOptions)
+    fetch("http://34.89.62.251:8081/shop/createNewItem/" + id, requestOptions)
       .then(response => {
         return response.json();
       })
@@ -58,7 +58,7 @@ export default class GetProductList extends React.Component {
   async addItem(id) {
     var itemExists = false;
 
-    const response = await fetch("http://localhost:9999/shop/showBasket");
+    const response = await fetch("http://34.89.62.251:8081/shop/showBasket");
     const json = await response.json();
     this.setState({ shoppingList: json });
     //console.log(this.state.shoppingList);
@@ -83,7 +83,7 @@ export default class GetProductList extends React.Component {
   }
 
   async getProductList() {
-    const response = await fetch("http://localhost:9999/shop/showProducts");
+    const response = await fetch("http://34.89.62.251:8081/shop/showProducts");
     const json = await response.json();
     this.setState({ productList: json });
 
